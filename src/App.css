@@ -1,0 +1,37 @@
+body{
+  margin:0;
+  padding: 0;
+  overflow-x: hidden;
+}
+.app_body{
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+/* Target vertical scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+/* Track (background behind the scroll handle) */
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Scroll thumb (the actual scroll handle) */
+::-webkit-scrollbar-thumb {
+  background-color: rgba(162, 163, 163, 0.8); /* low opacity by default */
+  border-radius: 10px;
+  transition: background-color 0.3s ease;
+}
+
+/* On hover over scrollbar thumb */
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(249, 250, 252, 0.9); /* higher opacity on hover */
+}
+
+/* Remove up/down arrow buttons */
+::-webkit-scrollbar-button {
+  display: none;
+  height: 0;
+}
