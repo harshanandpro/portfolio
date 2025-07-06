@@ -13,7 +13,6 @@ const Navbar = () => {
       <div className="navbar_mid">
 
       <NavBlock block_name="Intro"/>
-      <NavBlock block_name="About Me"/>
       <NavBlock block_name="Skills / Services"/>
       <NavBlock block_name="Projects"/>
       <NavBlock block_name="Testimonials"/>

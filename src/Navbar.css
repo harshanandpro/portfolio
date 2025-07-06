@@ -23,3 +23,33 @@
     justify-content: flex-end;
     align-items: center;
 }
+
+/* Mobile styles */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    height: auto;
+    padding: 1rem 0;
+  }
+
+  .navbar_left,
+  .navbar_mid,
+  .navbar_right {
+    flex: unset;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.5rem 0;
+  }
+
+  .navbar_mid {
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  .navblock {
+    padding: 0.5rem 1rem;
+    font-size: 1rem;
+  }
+}

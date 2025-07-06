@@ -1,0 +1,16 @@
+.skills{
+    width: 100vw;
+    display: flex;
+    height: fit-content;
+    align-items: center;
+    flex-direction: column;
+}
+.skills_header{
+    font-size: 40px;
+    font-weight: bold;
+}
+.skills_skills{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
