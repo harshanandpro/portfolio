@@ -10,7 +10,7 @@ body{
 }
 /* Target vertical scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 10px;
 }
 
 /* Track (background behind the scroll handle) */
