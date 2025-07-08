@@ -1,10 +1,14 @@
-.services{
-    /* background-color: red; */
-    width: 100vw;
-    height: 70vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.services {
+  width: 100vw;
+  min-height: 70vh;     /* gives some breathing room */
+  height: fit-content;  /* 🔥 allows it to expand if needed */
+  padding: 30px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  position: relative;   /* important if you use ::after glow stuff */
+  z-index: 1;
 }
 .services_main {
   position: relative;
