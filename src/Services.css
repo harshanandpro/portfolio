@@ -66,3 +66,74 @@ margin-left: 10px;
   font-weight: 500;
  margin-left: 50px;
 }
+/* Tablets (landscape) */
+@media (max-width: 1120px) {
+  .services_main {
+    width: 80vw;
+    padding: 20px;
+  }
+
+  .services_title {
+    font-size: 30px;
+  }
+
+  .services_2nd {
+    font-size: 18px;
+    margin-left: 8px;
+  }
+
+  .services_3rd {
+    font-size: 16px;
+    margin-left: 30px;
+  }
+}
+
+/* Tablets (portrait) + large phones */
+@media (max-width: 768px) {
+  .services_main {
+    width: 90vw;
+    padding: 20px;
+  }
+
+  .services_title {
+    font-size: 26px;
+  }
+
+  .services_2nd {
+    font-size: 16px;
+    margin-left: 6px;
+  }
+
+  .services_3rd {
+    font-size: 15px;
+    margin-left: 20px;
+  }
+}
+
+/* Mobile phones */
+@media (max-width: 500px) {
+  .services {
+    height: fit-content;
+    padding: 20px 0;
+  }
+
+  .services_main {
+    width: 95vw;
+    padding: 15px;
+    border-radius: 16px;
+  }
+
+  .services_title {
+    font-size: 22px;
+  }
+
+  .services_2nd {
+    font-size: 15px;
+    margin-left: 4px;
+  }
+
+  .services_3rd {
+    font-size: 14px;
+    margin-left: 15px;
+  }
+}
