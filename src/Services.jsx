@@ -1,9 +1,9 @@
 import React from 'react'
 import './Services.css'
 
-const Services = () => {
+const Services = ({id}) => {
   return (
-    <div className='services'>
+    <div id={id} className='services'>
         <div className="services_main">
             <p className="services_title">Services</p>
             <p className="services_2nd">🖌️ Front-End Web Development </p>

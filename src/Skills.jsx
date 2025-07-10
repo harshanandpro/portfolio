@@ -9,10 +9,10 @@ import HtmlIcon from './html.svg'
 import CssIcon from './css.svg'
 import BTIcon from './bootstrap.svg'
 import Light from './light.svg'
-const Skills = () => {
+const Skills = ({id}) => {
   return (
     
-    <div className='skills'>
+    <div id={id} className='skills'>
         <span className="skills_header">Here’s my current tech stack <span className="replacable">  and what I’m confident using.</span></span>
         <div className="skills_domain">      
     {/* <button className='skills_left' onClick={() => scrollLeft()}>⬅️</button> */}

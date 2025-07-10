@@ -2,9 +2,9 @@ import React from 'react'
 import './Body.css'
 import stars from './stars.gif'
 import bg from './bg.png'
-const Body = () => {
+const Body = ({id}) => {
   return (
-    <div className="body">
+    <div id={id} className="body">
     <div className='body_graphics'>
       <p className="body_content">
         <snap className="body_maincontent">

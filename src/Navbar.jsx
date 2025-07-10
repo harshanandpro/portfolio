@@ -12,11 +12,11 @@ const Navbar = () => {
 
       <div className="navbar_mid">
 
-      <NavBlock block_name="Intro"/>
-      <NavBlock block_name="Skills / Services"/>
-      <NavBlock block_name="Projects"/>
-      <NavBlock block_name="Testimonials"/>
-      <NavBlock block_name="Contact Me"/>
+      <NavBlock block_name="Intro" targetId="intro" />
+        <NavBlock block_name="Skills / Services" targetId="skills" />
+        <NavBlock block_name="Projects" targetId="projects" />
+        <NavBlock block_name="Testimonials" targetId="testimonials" />
+        <NavBlock block_name="Contact Me" targetId="contact" />
 
       </div>
       
