@@ -43,6 +43,7 @@ const settings = {
           photo={met}
           name={"Metflix"}
           desc={"metflix a API / React Based website which i made from scratch with API Integration from TMDB movie API"}
+          link={"https://metflix-navy.vercel.app/"}
         />
       </Slider>
     </div>
