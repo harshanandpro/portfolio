@@ -17,10 +17,10 @@ const Contact = ({id}) => {
     setError('');
 
     emailjs.sendForm(
-      'service_0z5be5i',
-      'template_rfvo9mq',
+      'service_rutmvzd',
+      'template_05a9plj',
       form.current,
-      'zKFi2ZgOH3CGS4Bvh'
+      'JCag2yQ9WZBUe0PYc'
     )
     .then(() => {
       setDone(true);
@@ -51,7 +51,7 @@ const Contact = ({id}) => {
       {done && <p className="success">Your message was sent successfully! ✅</p>}
       {error && <p className="error">{error}</p>}
       <p className="contact_alt">
-        Or email me at <a href="mailto:harshanandpro07@example.com">harshanandpro07@example.com</a>
+        Or email me at <a href="mailto:harshanandpro22@example.com">harshanandpro22@example.com</a>
       </p>
     </div>
   );

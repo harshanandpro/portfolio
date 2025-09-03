@@ -5,7 +5,7 @@ import "slick-carousel/slick/slick-theme.css";
 import './Projects.css';
 import ProjectsCard from './ProjectsCard.jsx';
 import port from './portfolio.png';
-
+import met from './metflix.png';
 const Projects = ({id}) => {
 const settings = {
   dots: true,
@@ -40,15 +40,9 @@ const settings = {
           desc={"This site is my own custom-built portfolio, designed to showcase my development skills and projects. Built with React, HTML, CSS, and JavaScript. It features responsive design, interactive sections, and smooth animations to deliver a professional first impression."}
         />
         <ProjectsCard
-          photo={port}
-          name={"Another Project"}
-          desc={"Description for another project."}
-        />
-        <ProjectsCard
-          photo={port}
-          name={"Yet Another"}
-          desc={"Description for yet another project."}
-          link={"https://youtube.com"}
+          photo={met}
+          name={"Metflix"}
+          desc={"metflix a API / React Based website which i made from scratch with API Integration from TMDB movie API"}
         />
       </Slider>
     </div>
