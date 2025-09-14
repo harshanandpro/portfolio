@@ -6,6 +6,7 @@ import './Projects.css';
 import ProjectsCard from './ProjectsCard.jsx';
 import port from './portfolio.png';
 import met from './metflix.png';
+import wet from './weather.png';
 const Projects = ({id}) => {
 const settings = {
   dots: true,
@@ -44,6 +45,12 @@ const settings = {
           name={"Metflix"}
           desc={"metflix a API / React Based website which i made from scratch with API Integration from TMDB movie API"}
           link={"https://metflix-navy.vercel.app/"}
+        />
+        <ProjectsCard
+          photo={wet}
+          name={"Weather Report"}
+          desc={"Weather Report has API based Integrated Map , Countries Search and Weather of Cities depending on where you click on Map."}
+          link={"https://weather-omega-sand.vercel.app/"}
         />
       </Slider>
     </div>
