@@ -9,6 +9,7 @@ import HtmlIcon from './html.svg'
 import CssIcon from './css.svg'
 import BTIcon from './bootstrap.svg'
 import Light from './light.svg'
+import Git from './git.svg'
 const Skills = ({id}) => {
   return (
     
@@ -25,6 +26,7 @@ const Skills = ({id}) => {
             <SkillsCard className="skills_skillscard" iconx={HtmlIcon} name="HTML" shortline="Craft clean, semantic markup for solid web foundations"/>
             <SkillsCard className="skills_skillscard" iconx={CssIcon} name="CSS" shortline={"Style it up with modern, responsive, sleek designs"}/>
             <SkillsCard className="skills_skillscard" iconx={BTIcon} name="BootStrap" shortline={"Rapidly design responsive layouts with Bootstrap’s grid"}/>
+            <SkillsCard className="skills_skillscard" iconx={Git} name="Github" shortline={"Can work on Github with a team or solo. I know all the basics"}/>
             <SkillsCard className="skills_skillscard" iconx={Light} name="Learning" shortline={"Quickly picking up new tools, frameworks, and concepts as needed."}/>
         </div>
 
