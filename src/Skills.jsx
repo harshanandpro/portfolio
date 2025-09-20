@@ -21,7 +21,7 @@ const Skills = ({id}) => {
         <div className="skills_skills">
             <SkillsCard className="skills_skillscard" iconx={ReactIcon} name="React" shortline="Build dynamic, responsive UIs with React’s component-based magic"/>
             <SkillsCard className="skills_skillscard" iconx={PythonIcon} name="Python" shortline={"Scripts, automation, and data tasks with clean Python code"}/>
-            <SkillsCard className="skills_skillscard" iconx={NodeIcon} name="Node Js" shortline="Server-side scripting for scalable web apps and APIs"/>
+            {/* <SkillsCard className="skills_skillscard" iconx={NodeIcon} name="Node Js" shortline="Server-side scripting for scalable web apps and APIs"/> */}
             <SkillsCard className="skills_skillscard" iconx={JSIcon} name="JS" shortline={"Power interactivity and logic with clean, efficient code"}/>
             <SkillsCard className="skills_skillscard" iconx={HtmlIcon} name="HTML" shortline="Craft clean, semantic markup for solid web foundations"/>
             <SkillsCard className="skills_skillscard" iconx={CssIcon} name="CSS" shortline={"Style it up with modern, responsive, sleek designs"}/>
