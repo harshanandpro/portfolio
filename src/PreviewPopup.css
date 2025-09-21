@@ -1,0 +1,49 @@
+/* Fullscreen dark blurred background but non-interactive so it won't steal hover */
+.preview-overlay {
+  position: fixed;
+  inset: 0; /* shorthand for top:0; right:0; bottom:0; left:0; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.6);
+  backdrop-filter: blur(6px);
+  z-index: 9999;
+
+  /* IMPORTANT: let pointer events pass through so the image hover isn't cancelled */
+  pointer-events: none;
+  animation: fadeIn .18s ease;
+}
+
+/* Content is also non-interactive (pointer-events none) so overlay never blocks the image */
+.preview-content {
+  pointer-events: none;
+  display: grid;                   /* use grid instead of flex */
+  grid-template-columns: repeat(2, 1fr);  /* 2 per row */
+  gap: 24px;                       /* space between images */
+  max-width: 80%;                  /* reduce max-width so images grow bigger */
+  max-height: 85%;
+  overflow: auto;
+  padding: 24px;
+  border-radius: 12px;
+  background: rgba(10,10,10,0.85);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.6);
+  justify-items: center;           /* center horizontally */
+  align-items: center;             /* center vertically in their grid cell */
+}
+.preview-content img {
+  width: 100%;                     /* take full cell width */
+  max-width: 500px;                /* bigger image size */
+  max-height: 70vh;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform .18s ease;
+}
+/* small zoom purely visual — still non-interactive */
+.preview-content img:hover {
+  transform: scale(1.03);
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: scale(0.995); }
+  to { opacity: 1; transform: scale(1); }
+}

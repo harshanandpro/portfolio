@@ -80,7 +80,12 @@
 }
 
 @media (max-width: 884px) {
-  
+  .body_img{
+    height: 50vh;
+  }
+  .body_graphics{
+    height: 50vh;
+  }
 .break1{
   display: inline;
 }
