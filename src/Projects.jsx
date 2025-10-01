@@ -11,6 +11,11 @@ import port2 from './port2.png';
 import port3 from './port3.png';
 import port4 from './port4.png';
 import met from './metflix.png';
+import met2 from './met2.png';
+import met3 from './met3.png';
+import met4 from './met4.png';
+import met5 from './met5.png';
+import met6 from './met6.png';
 import wet from './weather.png';
 import ipu from './ipu.png';
 import ipu2 from './ipu2.png';
@@ -24,7 +29,7 @@ const Projects = ({ id }) => {
     { name: "Portfolio", photo: port, desc: "This site is my own custom-built portfolio, designed to showcase my development skills and projects. Built with React, HTML, CSS, and JavaScript. It features responsive design, interactive sections, and smooth animations to deliver a professional first impression.", link: "", images: [port, port2 , port3 , port4] },
     { name: "College Website Redesign", photo: ipu, desc: "I Redesigned my college website to give it a modern look with a team member , he worked on academics page everything else is made by me", link: "https://ggsipu-frontend-xu8o.vercel.app/", images: [ipu, ipu2 , ipu3 , ipu4] },
     { name: "Weather Report", photo: wet, desc: "Weather Report has API based Integrated Map , Countries Search and Weather of Cities depending on where you click on Map.", link: "https://weather-omega-sand.vercel.app/", images: [wet, "/images/weather-2.png"] },
-    { name: "Metflix", photo: met, desc: "Metflix a API / React Based website which i made from scratch with API Integration from TMDB movie API", link: "https://metflix-navy.vercel.app/", images: [met, "/images/metflix-2.png", "/images/metflix-3.png"] },
+    { name: "Metflix", photo: met, desc: "Metflix a API / React Based website which i made from scratch with API Integration from TMDB movie API", link: "https://metflix-navy.vercel.app/", images: [met, met2 , met3 , met4 , met5 , met6] },
   ];
 
   const settings = {
