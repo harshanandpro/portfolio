@@ -24,40 +24,89 @@ import ipu4 from './ipu4.png';
 
 const Projects = ({ id }) => {
   const [previewImages, setPreviewImages] = useState(null);
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   const projects = [
-    { name: "Portfolio", photo: port, desc: "This site is my own custom-built portfolio, designed to showcase my development skills and projects. Built with React, HTML, CSS, and JavaScript. It features responsive design, interactive sections, and smooth animations to deliver a professional first impression.", link: "", images: [port, port2 , port3 , port4] },
-    { name: "College Website Redesign", photo: ipu, desc: "I Redesigned my college website to give it a modern look with a team member , he worked on academics page everything else is made by me", link: "https://ggsipu-frontend-xu8o.vercel.app/", images: [ipu, ipu2 , ipu3 , ipu4] },
-    { name: "Weather Report", photo: wet, desc: "Weather Report has API based Integrated Map , Countries Search and Weather of Cities depending on where you click on Map.", link: "https://weather-omega-sand.vercel.app/", images: [wet, "/images/weather-2.png"] },
-    { name: "Metflix", photo: met, desc: "Metflix a API / React Based website which i made from scratch with API Integration from TMDB movie API", link: "https://metflix-navy.vercel.app/", images: [met, met2 , met3 , met4 , met5 , met6] },
+    { 
+      name: "Portfolio", 
+      photo: port, 
+      desc: "This site is my own custom-built portfolio, designed to showcase my development skills and projects. Built with React, HTML, CSS, and JavaScript. It features responsive design, interactive sections, and smooth animations to deliver a professional first impression.", 
+      link: "", 
+      images: [port, port2, port3, port4],
+      color: "#FF6B6B"
+    },
+    { 
+      name: "College Website Redesign", 
+      photo: ipu, 
+      desc: "I Redesigned my college website to give it a modern look with a team member, he worked on academics page everything else is made by me", 
+      link: "https://ggsipu-frontend-xu8o.vercel.app/", 
+      images: [ipu, ipu2, ipu3, ipu4],
+      color: "#4ECDC4"
+    },
+    { 
+      name: "Weather Report", 
+      photo: wet, 
+      desc: "Weather Report has API based Integrated Map, Countries Search and Weather of Cities depending on where you click on Map.", 
+      link: "https://weather-omega-sand.vercel.app/", 
+      images: [wet, "/images/weather-2.png"],
+      color: "#45B7D1"
+    },
+    { 
+      name: "Metflix", 
+      photo: met, 
+      desc: "Metflix a API / React Based website which I made from scratch with API Integration from TMDB movie API", 
+      link: "https://metflix-navy.vercel.app/", 
+      images: [met, met2, met3, met4, met5, met6],
+      color: "#96CEB4"
+    },
   ];
 
   const settings = {
-    dots: true, infinite: true, speed: 500,
-    slidesToShow: 1, slidesToScroll: 1, arrows: true,
+    dots: true,
+    infinite: true,
+    speed: 600,
+    slidesToShow: 1,
+    slidesToScroll: 1,
+    arrows: true,
+    beforeChange: (current, next) => setCurrentSlide(next),
+    autoplay: true,
+    autoplaySpeed: 4000,
+    pauseOnHover: true,
+    fade: false,
+    cssEase: "cubic-bezier(0.4, 0, 0.2, 1)"
   };
 
   return (
     <div id={id} className='projects_container'>
-      <p className="projects_header">Projects</p>
+      <div className="projects_header_wrapper">
+        <h2 className="projects_header">Projects</h2>
+        <div className="projects_counter">
+          <span className="current_slide">{String(currentSlide + 1).padStart(2, '0')}</span>
+          <span className="divider">/</span>
+          <span className="total_slides">{String(projects.length).padStart(2, '0')}</span>
+        </div>
+      </div>
 
-      <Slider {...settings}>
-        {projects.map((p, i) => (
-          <div key={i}>
-            <ProjectsCard
-              name={p.name}
-              photo={p.photo}
-              desc={p.desc}
-              link={p.link}
-              moreImages={p.images}
-              setPreviewImages={setPreviewImages}
-            />
-          </div>
-        ))}
-      </Slider>
+      <div className="slider_wrapper">
+        <Slider {...settings}>
+          {projects.map((p, i) => (
+            <div key={i}>
+              <ProjectsCard
+                name={p.name}
+                photo={p.photo}
+                desc={p.desc}
+                link={p.link}
+                color={p.color}
+                moreImages={p.images}
+                setPreviewImages={setPreviewImages}
+                isActive={i === currentSlide}
+              />
+            </div>
+          ))}
+        </Slider>
+      </div>
 
-      {/* Render overlay at top-level so it doesn't live inside the slide DOM */}
-      <PreviewPopup images={previewImages} />
+      <PreviewPopup images={previewImages} setPreviewImages={setPreviewImages} />
     </div>
   );
 };

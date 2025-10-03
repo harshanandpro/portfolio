@@ -1,42 +1,435 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
 .navblock {
   position: relative;
-  padding: 0.5rem 1.2rem;
-  color: #fff;
-  font-weight: bold;
+  padding: 0.8rem 1.5rem;
+  color: rgba(255, 255, 255, 0.9);
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
   text-decoration: none;
   overflow: hidden;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  user-select: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 44px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.05);
+  z-index: 10;
+}
+
+
+.navblock-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 1;
+}
+
+.bg-gradient {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(78, 205, 196, 0.1) 0%,
+    rgba(255, 107, 107, 0.1) 50%,
+    rgba(69, 183, 209, 0.1) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+}
+
+.bg-glass {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 12px;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+
+.navblock-content {
+  position: relative;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+}
+
+.navblock-text {
+  position: relative;
+  transition: all 0.3s ease;
+  letter-spacing: 0.5px;
+}
+
+.navblock-underline {
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #FF6B6B, #4ECDC4, #45B7D1);
+  border-radius: 1px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+
+.navblock-particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.particle {
+  position: absolute;
+  width: 3px;
+  height: 3px;
+  background: rgba(78, 205, 196, 0.6);
+  border-radius: 50%;
+  opacity: 0;
+  transition: all 0.4s ease;
+}
+
+.particle-1 {
+  top: 20%;
+  left: 15%;
+  background: rgba(255, 107, 107, 0.6);
+}
+
+.particle-2 {
+  bottom: 25%;
+  right: 20%;
+  background: rgba(69, 183, 209, 0.6);
+}
+
+.particle-3 {
+  top: 60%;
+  left: 70%;
+  background: rgba(150, 206, 180, 0.6);
+}
+
+
+.ripple-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.ripple {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(78, 205, 196, 0.6) 0%,
+    rgba(78, 205, 196, 0.3) 50%,
+    transparent 100%
+  );
+  transform: translate(-50%, -50%) scale(0);
+  animation: rippleAnimation 0.6s ease-out forwards;
+}
+
+
+.navblock-glow {
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(
+    135deg,
+    rgba(78, 205, 196, 0.3),
+    rgba(255, 107, 107, 0.3),
+    rgba(69, 183, 209, 0.3)
+  );
+  border-radius: 14px;
+  opacity: 0;
+  filter: blur(8px);
+  transition: opacity 0.4s ease;
   z-index: 0;
-  height: 3vh;
 }
-.navblock:hover{
-    cursor: pointer;
+
+
+.navblock:hover {
+  transform: translateY(-2px);
+  border-color: rgba(78, 205, 196, 0.3);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.3),
+    0 0 0 1px rgba(78, 205, 196, 0.2);
 }
-.navblock::before {
+
+.navblock:hover .bg-gradient {
+  opacity: 1;
+}
+
+.navblock:hover .bg-glass {
+  opacity: 1;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.navblock:hover .navblock-text {
+  color: white;
+  text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
+}
+
+.navblock:hover .navblock-underline {
+  width: 100%;
+}
+
+.navblock:hover .particle {
+  opacity: 1;
+  animation: particleFloat 2s ease-in-out infinite;
+}
+
+.navblock:hover .navblock-glow {
+  opacity: 1;
+}
+
+
+.navblock.active {
+  background: rgba(78, 205, 196, 0.15);
+  border-color: rgba(78, 205, 196, 0.5);
+  color: white;
+  transform: scale(1.02);
+  box-shadow: 
+    0 8px 32px rgba(78, 205, 196, 0.3),
+    inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}
+
+.navblock.active .bg-gradient {
+  opacity: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(78, 205, 196, 0.2) 0%,
+    rgba(78, 205, 196, 0.1) 100%
+  );
+}
+
+.navblock.active .navblock-underline {
+  width: 100%;
+  background: #4ECDC4;
+  box-shadow: 0 0 10px rgba(78, 205, 196, 0.5);
+}
+
+.navblock.active .navblock-text {
+  color: white;
+  font-weight: 700;
+}
+
+.navblock.active .particle {
+  opacity: 1;
+}
+
+
+.navblock:active {
+  transform: translateY(-2px) scale(0.98);
+  transition: transform 0.1s ease;
+}
+
+
+.navblock:focus-visible {
+  outline: 2px solid #4ECDC4;
+  outline-offset: 2px;
+}
+
+
+.navblock::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  color: rgba(78, 205, 196, 0.3);
+  font-size: 1.1em;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+.navblock:hover::after {
+  opacity: 0.1;
+  transform: translate(-50%, -50%) scale(1.2);
+}
+
+
+.navblock.active::before {
   content: '';
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 100%;
   height: 100%;
-  border: 3px solid transparent;
-  border-radius: 6px;
-  box-sizing: border-box;
-  pointer-events: none;
-
-  /* initial state: hidden border */
-  clip-path: polygon(0 0, 0 0, 0 0, 0 0);
-  transition: clip-path 0.5s cubic-bezier(0.77, 0, 0.175, 1);
-  z-index: -1;
-
-  /* NEON EFFECT */
-  box-shadow: 0 0 8px #D2C5E9,
-              0 0 16px #D2C5E9,
-              0 0 24px #D2C5E9;
-  border-color: #D2C5E9;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(78, 205, 196, 0.2) 50%,
+    transparent 100%
+  );
+  animation: shimmer 1.5s ease-in-out infinite;
+  border-radius: 12px;
+  z-index: 1;
 }
 
-.navblock:hover::before {
-  /* Runs the animation in */
-  clip-path: polygon(
-    0% 0%, 100% 0%, 100% 100%, 0% 100%
-  );
+
+@keyframes rippleAnimation {
+  0% {
+    transform: translate(-50%, -50%) scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(20);
+    opacity: 0;
+  }
+}
+
+@keyframes particleFloat {
+  0%, 100% {
+    transform: translateY(0px) scale(1);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-8px) scale(1.2);
+    opacity: 1;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+.navblock:hover {
+  animation: gentlePulse 2s ease-in-out infinite;
+}
+
+@keyframes gentlePulse {
+  0%, 100% {
+    box-shadow: 
+      0 8px 32px rgba(0, 0, 0, 0.3),
+      0 0 0 1px rgba(78, 205, 196, 0.2);
+  }
+  50% {
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(78, 205, 196, 0.4),
+      0 0 20px rgba(78, 205, 196, 0.2);
+  }
+}
+
+
+@media (prefers-color-scheme: dark) {
+  .navblock {
+    background: rgba(0, 0, 0, 0.2);
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+
+  .navblock:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: rgba(78, 205, 196, 0.4);
+  }
+}
+
+
+@media (max-width: 768px) {
+  .navblock {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    min-height: 40px;
+  }
+
+  .navblock-text {
+    letter-spacing: 0.3px;
+  }
+}
+
+@media (max-width: 480px) {
+  .navblock {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+  }
+
+  .particle {
+    display: none; 
+  }
+}
+
+
+@media (prefers-contrast: high) {
+  .navblock {
+    border: 2px solid rgba(255, 255, 255, 0.3);
+  }
+
+  .navblock:hover,
+  .navblock.active {
+    border-color: #4ECDC4;
+    background: rgba(78, 205, 196, 0.2);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .navblock,
+  .navblock-text,
+  .navblock-underline,
+  .bg-gradient,
+  .bg-glass,
+  .particle,
+  .navblock-glow {
+    transition: none;
+    animation: none;
+  }
+
+  .navblock:hover {
+    animation: none;
+  }
+
+  .ripple {
+    display: none;
+  }
+}
+
+
+@media (hover: none) {
+  .navblock:hover {
+    transform: none;
+    animation: none;
+  }
+
+  .navblock:active {
+    transform: scale(0.98);
+    background: rgba(78, 205, 196, 0.1);
+  }
 }
