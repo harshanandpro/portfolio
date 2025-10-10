@@ -44,10 +44,12 @@ const Body = ({id}) => {
           </div>
 
           {/* Scroll indicator for mobile */}
-          <div className="scroll-indicator">
-            <div className="scroll-arrow">↓</div>
-            <span className="scroll-text">Scroll to explore</span>
-          </div>
+          {windowDimensions.width <= 768 && (
+            <div className="scroll-indicator">
+              <div className="scroll-arrow">↓</div>
+              <span className="scroll-text">Scroll to explore</span>
+            </div>
+          )}
         </div>
         
         <div className="body_shield"></div>
