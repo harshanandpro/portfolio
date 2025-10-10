@@ -7,6 +7,7 @@ const NavbarContainer = ({ visible }) => {
   const [lastScrollY, setLastScrollY] = useState(0);
   const [scrollProgress, setScrollProgress] = useState(0);
   const [isMobile, setIsMobile] = useState(false);
+  const [isNavOpen, setIsNavOpen] = useState(true);
 
   const navItems = [
     { name: 'Intro', targetId: 'intro' },
@@ -17,7 +18,6 @@ const NavbarContainer = ({ visible }) => {
     { name: 'Contact', targetId: 'contact' }
   ];
 
-  // Check if mobile
   useEffect(() => {
     const checkMobile = () => {
       setIsMobile(window.innerWidth <= 768);
@@ -51,14 +51,17 @@ const NavbarContainer = ({ visible }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, [lastScrollY]);
 
-  // Don't render floating nav on mobile
+  const toggleNavbar = () => {
+    setIsNavOpen(!isNavOpen);
+  };
+
   if (isMobile) {
     return null;
   }
 
   return (
     <nav className={`navbar-container ${visible ? 'scrolled' : ''} ${scrollDirection}`}>
-      <div className="navbar-floating">
+      <div className={`navbar-floating ${isNavOpen ? 'open' : 'closed'}`}>
         <div className="floating-nav-background">
           <div className="floating-bg-gradient"></div>
           <div className="floating-bg-blur"></div>
@@ -119,13 +122,35 @@ const NavbarContainer = ({ visible }) => {
           </div>
         </div>
 
-        <button 
-          className="back-to-top-btn"
-          onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        >
-          <div className="btn-icon">↑</div>
-        </button>
+        {/* Button container for back-to-top and close */}
+        <div className="nav-bottom-buttons">
+          <button 
+            className="back-to-top-btn"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+          >
+            <div className="btn-icon">↑</div>
+          </button>
+
+          <button 
+            className="nav-toggle-btn close-btn"
+            onClick={toggleNavbar}
+            title="Hide navigation"
+          >
+            <div className="btn-icon">›</div>
+          </button>
+        </div>
       </div>
+
+      {/* Open button (shows when navbar is closed) */}
+      {!isNavOpen && visible && (
+        <button 
+          className="nav-toggle-btn open-btn"
+          onClick={toggleNavbar}
+          title="Show navigation"
+        >
+          <div className="btn-icon">‹</div>
+        </button>
+      )}
     </nav>
   );
 };
