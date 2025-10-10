@@ -24,7 +24,6 @@
   z-index: 10;
 }
 
-
 .navblock-bg {
   position: absolute;
   top: 0;
@@ -64,7 +63,6 @@
   transition: all 0.4s ease;
 }
 
-
 .navblock-content {
   position: relative;
   z-index: 5;
@@ -87,7 +85,6 @@
   border-radius: 1px;
   transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
 }
-
 
 .navblock-particles {
   position: absolute;
@@ -127,7 +124,6 @@
   background: rgba(150, 206, 180, 0.6);
 }
 
-
 .ripple-container {
   position: absolute;
   top: 0;
@@ -153,7 +149,6 @@
   animation: rippleAnimation 0.6s ease-out forwards;
 }
 
-
 .navblock-glow {
   position: absolute;
   top: -2px;
@@ -173,44 +168,108 @@
   z-index: 0;
 }
 
+/* ========== DESKTOP ONLY HOVER (min-width: 769px) ========== */
+@media (min-width: 769px) {
+  .navblock {
+    position: relative;
+    transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-.navblock:hover {
-  transform: translateY(-2px);
-  border-color: rgba(78, 205, 196, 0.3);
-  background: rgba(255, 255, 255, 0.08);
-  box-shadow: 
-    0 8px 32px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(78, 205, 196, 0.2);
+  /* Lift UP on hover */
+  .navblock:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(78, 205, 196, 0.5);
+    background: linear-gradient(
+      135deg,
+      rgba(78, 205, 196, 0.15) 0%,
+      rgba(255, 107, 107, 0.12) 50%,
+      rgba(69, 183, 209, 0.15) 100%
+    );
+    box-shadow: 
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(78, 205, 196, 0.3),
+      0 0 30px rgba(78, 205, 196, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
+    animation: gentlePulse 2s ease-in-out infinite;
+  }
+
+  /* Enhanced glassmorphism effect */
+  .navblock:hover .bg-gradient {
+    opacity: 1;
+    background: linear-gradient(
+      135deg,
+      rgba(78, 205, 196, 0.25) 0%,
+      rgba(255, 107, 107, 0.2) 50%,
+      rgba(69, 183, 209, 0.25) 100%
+    );
+  }
+
+  .navblock:hover .bg-glass {
+    opacity: 1;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+  }
+
+  /* Text glow effect */
+  .navblock:hover .navblock-text {
+    color: white;
+    text-shadow: 
+      0 0 20px rgba(78, 205, 196, 0.6),
+      0 0 40px rgba(78, 205, 196, 0.3),
+      0 2px 4px rgba(0, 0, 0, 0.5);
+    font-weight: 700;
+  }
+
+  /* Animated underline */
+  .navblock:hover .navblock-underline {
+    width: 100%;
+    box-shadow: 0 0 15px rgba(78, 205, 196, 0.6);
+  }
+
+  /* Floating particles */
+  .navblock:hover .particle {
+    opacity: 1;
+    animation: particleFloat 2s ease-in-out infinite;
+  }
+
+  /* Outer glow */
+  .navblock:hover .navblock-glow {
+    opacity: 1;
+    filter: blur(12px);
+  }
+
+  /* Shine effect on hover */
+  .navblock::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(255, 255, 255, 0.3) 50%,
+      transparent 100%
+    );
+    border-radius: 12px;
+    z-index: 4;
+    transition: left 0.6s ease;
+  }
+
+  .navblock:hover::before {
+    left: 100%;
+  }
+
+  /* Enhanced background text */
+  .navblock:hover::after {
+    opacity: 0.08;
+    transform: translate(-50%, -50%) scale(1.3);
+  }
 }
 
-.navblock:hover .bg-gradient {
-  opacity: 1;
-}
-
-.navblock:hover .bg-glass {
-  opacity: 1;
-  background: rgba(255, 255, 255, 0.1);
-}
-
-.navblock:hover .navblock-text {
-  color: white;
-  text-shadow: 0 0 20px rgba(78, 205, 196, 0.5);
-}
-
-.navblock:hover .navblock-underline {
-  width: 100%;
-}
-
-.navblock:hover .particle {
-  opacity: 1;
-  animation: particleFloat 2s ease-in-out infinite;
-}
-
-.navblock:hover .navblock-glow {
-  opacity: 1;
-}
-
-
+/* ========== ACTIVE STATE ========== */
 .navblock.active {
   background: rgba(78, 205, 196, 0.15);
   border-color: rgba(78, 205, 196, 0.5);
@@ -245,40 +304,6 @@
   opacity: 1;
 }
 
-
-.navblock:active {
-  transform: translateY(-2px) scale(0.98);
-  transition: transform 0.1s ease;
-}
-
-
-.navblock:focus-visible {
-  outline: 2px solid #4ECDC4;
-  outline-offset: 2px;
-}
-
-
-.navblock::after {
-  content: attr(data-text);
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  font-weight: 700;
-  color: rgba(78, 205, 196, 0.3);
-  font-size: 1.1em;
-  z-index: 1;
-  opacity: 0;
-  transition: all 0.3s ease;
-  pointer-events: none;
-}
-
-.navblock:hover::after {
-  opacity: 0.1;
-  transform: translate(-50%, -50%) scale(1.2);
-}
-
-
 .navblock.active::before {
   content: '';
   position: absolute;
@@ -297,7 +322,29 @@
   z-index: 1;
 }
 
+/* ========== FOCUS ========== */
+.navblock:focus-visible {
+  outline: 2px solid #4ECDC4;
+  outline-offset: 2px;
+}
 
+/* ========== PSEUDO ELEMENT ========== */
+.navblock::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 700;
+  color: rgba(78, 205, 196, 0.3);
+  font-size: 1.1em;
+  z-index: 1;
+  opacity: 0;
+  transition: all 0.3s ease;
+  pointer-events: none;
+}
+
+/* ========== ANIMATIONS ========== */
 @keyframes rippleAnimation {
   0% {
     transform: translate(-50%, -50%) scale(0);
@@ -329,27 +376,156 @@
   }
 }
 
-
-.navblock:hover {
-  animation: gentlePulse 2s ease-in-out infinite;
-}
-
 @keyframes gentlePulse {
   0%, 100% {
     box-shadow: 
-      0 8px 32px rgba(0, 0, 0, 0.3),
-      0 0 0 1px rgba(78, 205, 196, 0.2);
+      0 12px 40px rgba(0, 0, 0, 0.4),
+      0 0 0 1px rgba(78, 205, 196, 0.3),
+      0 0 30px rgba(78, 205, 196, 0.2),
+      inset 0 1px 0 rgba(255, 255, 255, 0.15);
   }
   50% {
     box-shadow: 
-      0 12px 40px rgba(0, 0, 0, 0.4),
-      0 0 0 1px rgba(78, 205, 196, 0.4),
-      0 0 20px rgba(78, 205, 196, 0.2);
+      0 16px 50px rgba(0, 0, 0, 0.5),
+      0 0 0 1px rgba(78, 205, 196, 0.5),
+      0 0 40px rgba(78, 205, 196, 0.4),
+      inset 0 1px 0 rgba(255, 255, 255, 0.2);
   }
 }
 
+/* ========== MOBILE (max-width: 768px) - NO HOVER ========== */
+@media (max-width: 768px) {
+  .navblock {
+    padding: 0.7rem 1.2rem;
+    font-size: 0.9rem;
+    min-height: 56px;
+    -webkit-tap-highlight-color: transparent;
+  }
 
-@media (prefers-color-scheme: dark) {
+  .navblock-text {
+    letter-spacing: 0.3px;
+  }
+
+  /* DISABLE ALL HOVER on mobile */
+  .navblock:hover {
+    transform: none !important;
+    animation: none !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+  }
+
+  .navblock:hover .bg-gradient {
+    opacity: 0 !important;
+  }
+
+  .navblock:hover .bg-glass {
+    opacity: 0 !important;
+  }
+
+  .navblock:hover .navblock-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: none !important;
+  }
+
+  .navblock:hover .navblock-underline {
+    width: 0 !important;
+  }
+
+  .navblock:hover .particle {
+    opacity: 0 !important;
+    animation: none !important;
+  }
+
+  .navblock:hover .navblock-glow {
+    opacity: 0 !important;
+  }
+
+  .navblock:hover::after {
+    opacity: 0 !important;
+  }
+
+  /* Use ACTIVE (tap) state on mobile */
+  .navblock:active {
+    transform: scale(0.96) !important;
+    background: rgba(78, 205, 196, 0.15) !important;
+    border-color: rgba(78, 205, 196, 0.3) !important;
+    transition: all 0.1s ease !important;
+  }
+
+  /* Always keep content visible */
+  .navblock-content,
+  .navblock-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
+  }
+
+  /* Hide particles on mobile */
+  .navblock-particles {
+    display: none !important;
+  }
+
+  /* Simplify ripple */
+  .ripple {
+    animation-duration: 0.4s;
+  }
+}
+
+/* ========== SMALL MOBILE ========== */
+@media (max-width: 480px) {
+  .navblock {
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+    border-radius: 10px;
+    min-height: 52px;
+  }
+
+  .particle {
+    display: none !important;
+  }
+}
+
+/* ========== TOUCH DEVICES ONLY ========== */
+@media (hover: none) and (pointer: coarse) {
+  .navblock:hover {
+    transform: none !important;
+    animation: none !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    box-shadow: none !important;
+  }
+
+  .navblock:hover .bg-gradient,
+  .navblock:hover .bg-glass,
+  .navblock:hover .particle,
+  .navblock:hover .navblock-glow {
+    opacity: 0 !important;
+  }
+
+  .navblock:hover .navblock-text {
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: none !important;
+  }
+
+  .navblock:hover .navblock-underline {
+    width: 0 !important;
+  }
+
+  .navblock:hover::after {
+    opacity: 0 !important;
+    transform: translate(-50%, -50%) scale(1) !important;
+  }
+
+  .navblock:active {
+    transform: scale(0.96) !important;
+    background: rgba(78, 205, 196, 0.12) !important;
+    border-color: rgba(78, 205, 196, 0.3) !important;
+  }
+}
+
+/* ========== DARK MODE ========== */
+@media (prefers-color-scheme: dark) and (min-width: 769px) {
   .navblock {
     background: rgba(0, 0, 0, 0.2);
     border-color: rgba(255, 255, 255, 0.15);
@@ -361,32 +537,7 @@
   }
 }
 
-
-@media (max-width: 768px) {
-  .navblock {
-    padding: 0.7rem 1.2rem;
-    font-size: 0.9rem;
-    min-height: 40px;
-  }
-
-  .navblock-text {
-    letter-spacing: 0.3px;
-  }
-}
-
-@media (max-width: 480px) {
-  .navblock {
-    padding: 0.6rem 1rem;
-    font-size: 0.85rem;
-    border-radius: 10px;
-  }
-
-  .particle {
-    display: none; 
-  }
-}
-
-
+/* ========== HIGH CONTRAST ========== */
 @media (prefers-contrast: high) {
   .navblock {
     border: 2px solid rgba(255, 255, 255, 0.3);
@@ -399,7 +550,7 @@
   }
 }
 
-
+/* ========== REDUCED MOTION ========== */
 @media (prefers-reduced-motion: reduce) {
   .navblock,
   .navblock-text,
@@ -408,28 +559,153 @@
   .bg-glass,
   .particle,
   .navblock-glow {
-    transition: none;
-    animation: none;
+    transition: none !important;
+    animation: none !important;
   }
 
   .navblock:hover {
-    animation: none;
+    animation: none !important;
   }
 
   .ripple {
     display: none;
   }
 }
-
-
-@media (hover: none) {
-  .navblock:hover {
-    transform: none;
-    animation: none;
+/* ========== NUCLEAR MOBILE FIX - ADD AT THE VERY END ========== */
+@media (max-width: 768px) {
+  /* Force everything visible on mobile */
+  .navblock,
+  .navblock *,
+  .navblock-content,
+  .navblock-text,
+  .navblock-bg,
+  .bg-gradient,
+  .bg-glass {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: flex !important;
   }
 
+  .navblock-text {
+    display: inline !important;
+  }
+
+  /* Kill ALL hover states completely */
+  .navblock:hover,
+  .navblock:hover *,
+  .navblock:hover .navblock-content,
+  .navblock:hover .navblock-text,
+  .navblock:hover .navblock-bg,
+  .navblock:hover .bg-gradient,
+  .navblock:hover .bg-glass,
+  .navblock:hover .navblock-underline,
+  .navblock:hover .particle,
+  .navblock:hover .navblock-glow,
+  .navblock:hover::after,
+  .navblock:hover::before {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: none !important;
+    filter: none !important;
+    width: auto !important;
+  }
+
+  .navblock:hover .navblock-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline !important;
+  }
+
+  .navblock:hover .navblock-underline {
+    width: 0 !important;
+    opacity: 0 !important;
+  }
+
+  /* Hide decorative elements */
+  .navblock:hover .particle,
+  .navblock:hover .navblock-glow,
+  .navblock:hover::after {
+    opacity: 0 !important;
+    display: none !important;
+  }
+
+  /* Force particles and decorations hidden */
+  .navblock-particles,
+  .particle,
+  .navblock-glow,
+  .navblock::after {
+    display: none !important;
+  }
+
+  /* Active/tap state only */
   .navblock:active {
-    transform: scale(0.98);
-    background: rgba(78, 205, 196, 0.1);
+    transform: scale(0.96) !important;
+    background: rgba(78, 205, 196, 0.15) !important;
+    border-color: rgba(78, 205, 196, 0.3) !important;
+    transition: transform 0.1s ease !important;
+  }
+
+  .navblock:active .navblock-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline !important;
+  }
+}
+
+/* ========== TOUCH DEVICES ONLY ========== */
+@media (hover: none) and (pointer: coarse) {
+  /* Force everything visible */
+  .navblock,
+  .navblock *,
+  .navblock-content,
+  .navblock-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+  }
+
+  .navblock-text {
+    display: inline !important;
+  }
+
+  /* Kill ALL hover */
+  .navblock:hover,
+  .navblock:hover * {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: none !important;
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .navblock:hover .navblock-text {
+    opacity: 1 !important;
+    visibility: visible !important;
+    display: inline !important;
+    color: rgba(255, 255, 255, 0.9) !important;
+    text-shadow: none !important;
+  }
+
+  .navblock:hover {
+    background: rgba(255, 255, 255, 0.05) !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
+    box-shadow: none !important;
+  }
+
+  /* Hide all decorative elements */
+  .navblock-particles,
+  .particle,
+  .navblock-glow,
+  .navblock::after,
+  .bg-gradient,
+  .bg-glass {
+    display: none !important;
+    opacity: 0 !important;
   }
 }

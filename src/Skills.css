@@ -234,6 +234,9 @@
 .skills_skills::-webkit-scrollbar-thumb:hover {
   background: linear-gradient(90deg, #4ECDC4, #FF6B6B);
 }
+.skills_skills::-webkit-scrollbar-button {
+  display: none !important;
+}
 
 .skill-wrapper {
   flex-shrink: 0;

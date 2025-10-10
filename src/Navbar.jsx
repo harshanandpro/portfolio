@@ -26,14 +26,14 @@ const Navbar = ({ hide }) => {
 
     if (mobileMenuOpen) {
       document.addEventListener('click', handleOutsideClick);
-      document.body.classList.add('menu-open');
+      // ❌ REMOVED: document.body.classList.add('menu-open');
     } else {
-      document.body.classList.remove('menu-open');
+      // ❌ REMOVED: document.body.classList.remove('menu-open');
     }
 
     return () => {
       document.removeEventListener('click', handleOutsideClick);
-      document.body.classList.remove('menu-open');
+      // ❌ REMOVED: document.body.classList.remove('menu-open');
     };
   }, [mobileMenuOpen]);
 

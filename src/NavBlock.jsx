@@ -6,6 +6,8 @@ const NavBlock = ({ block_name, targetId, onClick }) => {
   const [ripples, setRipples] = useState([]);
 
   const handleClick = (e) => {
+    e.preventDefault(); // Prevent default link behavior
+    
     // Create ripple effect
     const rect = e.currentTarget.getBoundingClientRect();
     const x = e.clientX - rect.left;
@@ -24,20 +26,31 @@ const NavBlock = ({ block_name, targetId, onClick }) => {
       setRipples(prev => prev.filter(ripple => ripple.id !== newRipple.id));
     }, 600);
 
-    // 🔥 NEW: Call the onClick callback if provided (for closing mobile menu)
-    if (onClick) {
+    // 🔥 FIRST: Close the menu immediately on mobile
+    if (onClick && window.innerWidth <= 768) {
       onClick();
     }
 
-    // Scroll to target
-    const el = document.getElementById(targetId);
-    if (el) {
-      setIsActive(true);
-      el.scrollIntoView({ behavior: 'smooth', block: 'start', inline: 'nearest' });
-      
-      // Remove active state after scroll
-      setTimeout(() => setIsActive(false), 1500);
-    }
+    // 🔥 THEN: Scroll to target with a small delay to let menu close
+    setTimeout(() => {
+      const el = document.getElementById(targetId);
+      if (el) {
+        setIsActive(true);
+        
+        // Calculate offset for fixed navbar
+        const navbarHeight = 70; // Adjust based on your navbar height
+        const elementPosition = el.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+        
+        // Remove active state after scroll
+        setTimeout(() => setIsActive(false), 1500);
+      }
+    }, 100); // Small delay to let menu start closing
   };
 
   useEffect(() => {
